@@ -14,6 +14,8 @@ namespace MvcMovie2.Repository
 
         BlogModelDataset.PostRow GetPostByTitle(string blogTitle);
 
+        BlogModelDataset.PostRow GetPostByID(int ID);
+
         List<UserViewModel> GetUserEmailList();
 
         StatisticsViewModel Statistics(string usernameStat);

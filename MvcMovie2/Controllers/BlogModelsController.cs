@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml;
+using MvcMovie2.Datasets;
 
 namespace MvcMovie2.Controllers
 {
@@ -68,7 +70,9 @@ namespace MvcMovie2.Controllers
         {
            var xmlData = XmlPostRepository.ReadXmlDataset();
 
-           xmlData.Post.AddPostRow(blogModel.ID, User.Identity.Name, blogModel.Title,blogModel.PostDate,blogModel.Body);
+           //xmlData.Post.AddPostRow(blogModel.ID, User.Identity.Name, blogModel.Title,DateTime.Now, blogModel.Body);
+
+           xmlData.Post.AddPostRow(User.Identity.Name, blogModel.Title, DateTime.Now, blogModel.Body);
 
             xmlData.WriteXml("C:/Users/geoffrey.kuhn/Documents/Visual Studio 2013/Projects/MvcMovie2/MvcMovie2/XmlData/Posts.xml");
 
@@ -76,13 +80,10 @@ namespace MvcMovie2.Controllers
         }
 
         // GET: BlogModels/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BlogModel blogModel = db.Posts.Find(id);
+            BlogModelDataset.PostRow blogModel = postRepository.GetPostByID(id);
+
             if (blogModel == null)
             {
                 return HttpNotFound();
@@ -93,18 +94,28 @@ namespace MvcMovie2.Controllers
         // POST: BlogModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Title,PostDate,Body")] BlogModel blogModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blogModel).State = EntityState.Modified;
-                db.SaveChanges();
+                BlogModelDataset.PostRow blogModel2 = postRepository.GetPostByID(blogModel.ID);
+
+                var xmlData = XmlPostRepository.ReadXmlDataset();
+                //ask why its -1 otherwise it modifies the one after
+                xmlData.Tables["Post"].Rows[blogModel2.ID - 1]["Title"] = blogModel.Title;
+                xmlData.Tables["Post"].Rows[blogModel2.ID - 1]["Body"] = blogModel.Body;
+                xmlData.Tables["Post"].Rows[blogModel2.ID - 1]["PostDate"] = blogModel.PostDate;
+
+                xmlData.WriteXml("C:/Users/geoffrey.kuhn/Documents/Visual Studio 2013/Projects/MvcMovie2/MvcMovie2/XmlData/Posts.xml");
+
                 return RedirectToAction("Index");
             }
-            return View(blogModel);
+            return RedirectToAction("Index");
         }
+         
 
         // GET: BlogModels/Delete/5
         public ActionResult Delete(int? id)

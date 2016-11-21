@@ -20,6 +20,16 @@ namespace MvcMovie2.Repository
 
             return xmlData.Post.SingleOrDefault(v => v.Title.Equals(blogTitle));
         }
+
+        BlogModelDataset.PostRow IPostRepository.GetPostByID(int id)
+        {
+            var xmlData = ReadXmlDataset();
+
+            return xmlData.Post.SingleOrDefault(v => v.ID.Equals(id));
+        }
+
+
+
         /*
         public BlogModel GetPostByTitle(string blogTitle)
         {

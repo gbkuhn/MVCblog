@@ -434,10 +434,10 @@ namespace MvcMovie2.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PostRow AddPostRow(int ID, string User, string Title, System.DateTime PostDate, string Body) {
+            public PostRow AddPostRow(string User, string Title, System.DateTime PostDate, string Body) {
                 PostRow rowPostRow = ((PostRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         User,
                         Title,
                         PostDate,
@@ -484,6 +484,9 @@ namespace MvcMovie2.Datasets {
                 base.Columns.Add(this.columnPostDate);
                 this.columnBody = new global::System.Data.DataColumn("Body", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBody);
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = 1;
+                this.columnID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -619,7 +622,7 @@ namespace MvcMovie2.Datasets {
             
             private global::System.Data.DataColumn columnUser;
             
-            private global::System.Data.DataColumn columnTItle;
+            private global::System.Data.DataColumn columnTitle;
             
             private global::System.Data.DataColumn columnBody;
             
@@ -668,9 +671,9 @@ namespace MvcMovie2.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TItleColumn {
+            public global::System.Data.DataColumn TitleColumn {
                 get {
-                    return this.columnTItle;
+                    return this.columnTitle;
                 }
             }
             
@@ -727,11 +730,11 @@ namespace MvcMovie2.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CommentRow AddCommentRow(string TItle, string Body, int BlogModelID) {
+            public CommentRow AddCommentRow(string Title, string Body, int BlogModelID) {
                 CommentRow rowCommentRow = ((CommentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        TItle,
+                        Title,
                         Body,
                         BlogModelID};
                 rowCommentRow.ItemArray = columnValuesArray;
@@ -757,7 +760,7 @@ namespace MvcMovie2.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnUser = base.Columns["User"];
-                this.columnTItle = base.Columns["TItle"];
+                this.columnTitle = base.Columns["Title"];
                 this.columnBody = base.Columns["Body"];
                 this.columnBlogModelID = base.Columns["BlogModelID"];
             }
@@ -767,8 +770,8 @@ namespace MvcMovie2.Datasets {
             private void InitClass() {
                 this.columnUser = new global::System.Data.DataColumn("User", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUser);
-                this.columnTItle = new global::System.Data.DataColumn("TItle", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTItle);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
                 this.columnBody = new global::System.Data.DataColumn("Body", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBody);
                 this.columnBlogModelID = new global::System.Data.DataColumn("BlogModelID", typeof(int), null, global::System.Data.MappingType.Element);
@@ -919,12 +922,7 @@ namespace MvcMovie2.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int ID {
                 get {
-                    try {
-                        return ((int)(this[this.tablePost.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Post\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablePost.IDColumn]));
                 }
                 set {
                     this[this.tablePost.IDColumn] = value;
@@ -993,18 +991,6 @@ namespace MvcMovie2.Datasets {
                 set {
                     this[this.tablePost.BodyColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tablePost.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIDNull() {
-                this[this.tablePost.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1088,17 +1074,17 @@ namespace MvcMovie2.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TItle {
+            public string Title {
                 get {
                     try {
-                        return ((string)(this[this.tableComment.TItleColumn]));
+                        return ((string)(this[this.tableComment.TitleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TItle\' in table \'Comment\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Title\' in table \'Comment\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableComment.TItleColumn] = value;
+                    this[this.tableComment.TitleColumn] = value;
                 }
             }
             
@@ -1148,14 +1134,14 @@ namespace MvcMovie2.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTItleNull() {
-                return this.IsNull(this.tableComment.TItleColumn);
+            public bool IsTitleNull() {
+                return this.IsNull(this.tableComment.TitleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTItleNull() {
-                this[this.tableComment.TItleColumn] = global::System.Convert.DBNull;
+            public void SetTitleNull() {
+                this[this.tableComment.TitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -8,9 +8,10 @@ using MvcMovie2.Models;
 
 namespace MvcMovie2.Repository
 {
-    public class PostRepository : IPostRepository
+    public class PostRepository 
     {
-        private BlogDBContext db = new BlogDBContext();
+        
+       // private BlogDBContext db = new BlogDBContext();
 
         /* will have to be incldued if the repository is supposed ot be used again, method below is placeholder so it will compile
         public BlogModelDataset.PostRow GetPostByTitle(string blogTitle)
@@ -18,7 +19,14 @@ namespace MvcMovie2.Repository
             return db.Posts.SingleOrDefault(v => v.Title.Equals(blogTitle));
         }*/
 
+        /*
+
         public BlogModelDataset.PostRow GetPostByTitle(string blogTitle)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BlogModelDataset.PostRow GetPostByID(int ID)
         {
             throw new NotImplementedException();
         }
@@ -99,6 +107,8 @@ namespace MvcMovie2.Repository
             return model;
         }
         */
+
+        /*
         public List<BlogModelDataset.CommentRow> ViewComments(int blogModelId)
         {
             throw new NotImplementedException();
@@ -115,5 +125,6 @@ namespace MvcMovie2.Repository
             return db.Posts.GroupBy(v => v.PostDate.Month)
                     .Select(x => new MonthsandPosts() { Month = x.Key, PostCount = x.Count() }).ToList();
         }
+         * */
     }
 }
