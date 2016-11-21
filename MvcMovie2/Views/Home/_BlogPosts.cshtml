@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcMovie2.Models.BlogModel>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <br>
+            @Html.Partial("BlogPost", item)
+        <br/>
+    }
+
+    <div style="width:800px; margin:0 auto;">
+        <div class="floatright">
+            <a class="twitter-timeline" href="https://twitter.com/AgileThought" data-widget-id="738394833933479936">Tweets by AgileThought</a>
+            <script type="text/javascript">
+                !function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + "://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, "script", "twitter-wjs");
+            </script>
+        </div>
+
+
+    </div>
+}
+
+            }

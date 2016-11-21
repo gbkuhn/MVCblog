@@ -1,0 +1,39 @@
+﻿@model List<MvcMovie2.Datasets.BlogModelDataset.CommentRow>
+@using MvcMovie2.Models
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+
+    foreach (var item in Model)
+    {
+
+        <div class="row col-md-offset-2">
+            <div class="col-md-4">
+                <div class="card" id="card-settings">
+                    <div class="card-block">
+                        <h4 class="card-title">@Html.DisplayFor(m => item.Title)</h4>
+                        <h6 class="card-subtitle text-muted ">@Html.DisplayFor(m => item.Title) @Html.DisplayFor(m => item.Body)</h6>
+                    </div>
+                    <div class="card-block">
+                        <p class="card-text">@Html.DisplayFor(m => item.Body)</p>
+                    </div>
+                    @* <li>@Html.ActionLink("View Comments", "ViewComments", "Home")     @Html.ActionLink("Post Comment", "PostComment", "Home")</li>*@
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div>No comments made</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Homepage", "Index")
+</div>
+

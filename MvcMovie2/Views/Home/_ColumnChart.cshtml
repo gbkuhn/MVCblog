@@ -1,0 +1,48 @@
+﻿@using System.Text
+@using MvcMovie2.Models
+@model List<MonthsandPosts>
+
+@{
+   // int check = Model.PostCount;
+    //string month = Model.MonthName;
+
+    StringBuilder ChartData = new StringBuilder("[[\"Number of Posts\", \"Month\", { role: \"style\" }],");
+    
+    foreach (var value in Model)
+    {
+        ChartData.AppendFormat("[\"{0}\", {1}, \"blue\"],", value.MonthName, value.PostCount);
+    }
+    ChartData.Append("]");
+}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+        google.charts.load("current", { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(
+              @Html.Raw(ChartData.ToString())
+            );
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                             {
+                                 calc: "stringify",
+                                 sourceColumn: 1,
+                                 type: "string",
+                                 role: "annotation"
+                             },
+                             2]);
+
+            var options = {
+                title: "Number of Posts by the Month",
+                width: 800,
+                height: 600,
+                bar: { groupWidth: "95%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+</script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>

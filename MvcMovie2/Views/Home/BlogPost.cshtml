@@ -1,0 +1,25 @@
+﻿@model MvcMovie2.Models.BlogModel
+
+@if (Model != null)
+{
+    <div style="width:800px; margin:0 auto;">
+        <div class="card" id="card-settings">
+            <div class="card-block">
+                <h4 class="card-title">@Html.DisplayFor(model => model.Title)</h4>
+                <h6 class="card-subtitle text-muted "><i id="email-icon" class="glyphicon glyphicon-envelope"></i>@Html.DisplayFor(model => model.User) @Html.DisplayFor(model => model.PostDate)</h6>
+            </div>
+            <div class="card-block">
+                <p class="card-text">@Html.DisplayFor(model => model.Body)</p>
+            </div>
+
+            <li>@Html.ActionLink("View Comments", "ViewComments", "Home", new { BlogModelID = Model.ID }, null)      @Html.ActionLink("Post Comment", "PostComment", "Home", new { BlogModelID = Model.ID }, null)</li> @* last param htmlArguments which are none. You need this value
+                //     otherwise you call the WRONG method*@
+
+        </div>
+    </div>
+}
+else
+{
+    <div>No post selected</div>
+}
+ 

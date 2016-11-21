@@ -1,0 +1,51 @@
+﻿@using MvcMovie2.Models
+@model StatisticsViewModel
+
+@section scripts {
+    <script type="text/javascript" src="../Scripts/BlogPost.js"></script>
+}
+
+@{
+    ViewBag.Title = "User Stats";
+}
+<h2>@ViewBag.Title</h2>
+<h3>Total Posts: @Model.PostTitles.Count</h3>
+<h3>Registered Users:@Model.UserEmails.Count</h3>
+
+@if (Model != null)
+{
+    using (Html.BeginForm()) //necesary tag
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+
+                    @{Html.RenderPartial("UserEmailList", Model.UserEmails);}
+
+                </div>
+                <div id="titleDetail" class="col-sm-2">
+
+                    @{ Html.RenderAction("GetBlogTitleList");}
+
+                </div>
+                <div id="detail" class="col-sm-7">
+
+                    @{ Html.RenderAction("BlogPost");}
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @{Html.RenderAction("GetColumnChart");}
+        </div>
+    }
+}
+
+
+
+
+
+
+
+

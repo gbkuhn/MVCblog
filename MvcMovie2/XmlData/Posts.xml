@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<BlogModelDataset xmlns="http://tempuri.org/BlogModelDataset.xsd">
+  <Post>
+    <ID>0</ID>
+    <User>test user</User>
+    <Title>test title</Title>
+    <PostDate>1999-11-11T00:00:00-05:00</PostDate>
+    <Body>test body yo</Body>
+  </Post>
+  <Post>
+    <ID>0</ID>
+    <User>test user</User>
+    <Title>test title</Title>
+    <PostDate>1999-11-11T00:00:00-05:00</PostDate>
+    <Body>test post</Body>
+  </Post>
+  <Post>
+    <ID>0</ID>
+    <User>anotheremail@email.com</User>
+    <Title>test title</Title>
+    <PostDate>1999-11-11T00:00:00-05:00</PostDate>
+    <Body>test post</Body>
+  </Post>
+</BlogModelDataset>

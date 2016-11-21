@@ -1,0 +1,1 @@
+C:\Users\geoffrey.kuhn\Documents\Visual Studio 2013\Projects\MvcMovie2\Blog.Test\obj\Debug\Blog.Test.csprojResolveAssemblyReference.cache

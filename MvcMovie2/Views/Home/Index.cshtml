@@ -1,0 +1,37 @@
+﻿@using MvcMovie2.Models
+@model IEnumerable<MvcMovie2.Models.BlogModel>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-offset-2">
+    <h1>A Neat Blog</h1>
+</div>
+<hr/>
+@*
+    <div>
+        @Html.Partial("~/Views/BlogModels/Create.cshtml");
+    </div>
+*@
+
+@Html.Partial("_BlogPosts", Model)
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Number of Posts</h2>
+            <p></p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Placeholder text</h2>
+            <p>Text</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Placeholder text</h2>
+            <p>TEXT</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>

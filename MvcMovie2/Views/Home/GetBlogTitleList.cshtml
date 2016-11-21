@@ -1,0 +1,16 @@
+﻿@model List<String>
+
+@if (Model != null)
+{
+    foreach (var title in Model)
+    {
+        //  <a href="" class="BlogTitle" data-id="@title">@title</a>
+        <button type="button" class="BlogTitle btn btn-primary" data-id="@title">@title</button>
+
+        <br>
+    }
+}
+else
+{
+    <div>No user selected</div>
+}

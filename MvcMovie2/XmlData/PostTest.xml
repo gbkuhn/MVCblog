@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Posts>
+  <Post>
+    <ID>1</ID>
+    <User>testemail1@gmail.com</User>
+    <Title>test title</Title>
+    <PostDate>11/11/1999 12:00:00 AM</PostDate>
+    <Body>test body1</Body>
+  </Post>
+  <Post>
+    <ID>2</ID>
+    <User>emailaddress@gmail.com</User>
+    <Title>test title2</Title>
+    <PostDate>11/11/1998 12:00:00 AM</PostDate>
+    <Body>test body2</Body>
+  </Post>
+  <Post>
+    <ID>3</ID>
+    <User>Generic Mouse</User>
+    <Title>test title 3</Title>
+    <PostDate>10/3/2000 12:00:00 AM</PostDate>
+    <Body>test body 3</Body>
+  </Post>
+</Posts>

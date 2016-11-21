@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MvcMovie2.Models.BlogModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())//necesary tag
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Search</button>
+            </span>
+                <input type="text" class="form-control" placeholder="Search Posts" name="search">
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("_BlogPosts", Model)

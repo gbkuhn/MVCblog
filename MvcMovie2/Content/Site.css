@@ -1,0 +1,52 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 560px;
+}
+
+.bg-navbar-primary{
+    background-color:#d3d3d3; 
+}
+
+.bg-navbar-secondary {
+    background-color: #e3f2fd;
+}
+
+#nav-color {
+    background-color: #d3d3d3;
+}
+
+#card-settings{
+  background-color: white;
+}
+
+#email-icon {
+    color: #008080;
+    padding-right: 3px;
+}
+
+#posts_col {
+    width: 0px ;
+    margin-left: auto ;
+    margin-right: auto;
+}
+

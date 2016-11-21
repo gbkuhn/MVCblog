@@ -1,0 +1,21 @@
+﻿@using MvcMovie2.Models
+@model List<UserViewModel>
+
+@{
+    int postCount = 0;
+}
+
+@if (Model != null)
+{
+    foreach (var user in Model)
+    {
+        //<a href="" class="useremail" data-id="@user.EmailAddress">@user.EmailAddress</a>
+
+        <button type="button" onclick="GetBlogTitleList(this)" class="useremail btn btn-primary" data-id="@user.EmailAddress">@user.EmailAddress</button>
+
+        <span class="badge badge-primary">@user.PostCount</span>
+
+        <br>
+    }
+}
+

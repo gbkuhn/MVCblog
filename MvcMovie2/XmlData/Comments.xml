@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<BlogModelDataset xmlns="http://tempuri.org/BlogModel.xsd">
+  <Comment>
+    <ID>1</ID>
+    <Title>test title</Title>
+    <Body>test body</Body>
+    <BlogModelID>0</BlogModelID>
+  </Comment>
+</BlogModelDataset>
